@@ -35,3 +35,31 @@ workload. They achieve elasticity in a cost effective way on commodity hardware
 and software platforms.
  + Message driven: In order to establish the resilient principle, reactive systems need to establish a
 boundary between components by relying on asynchronous message passing.
+
+
+### Observable Creation
+
+```java
+Observable.create<String> {
+ it.onNext("Emit 1")
+ it.onNext("Emit 2")
+ it.onNext("Emit 3")
+ it.onNext("Emit 4")
+ it.onError(Exception("My Custom Exception"))
+}
+```
+
+```java
+Observable.fromArray()
+Observable.fromIterator()
+Observable.fromCallable()
+Observable.fromPublisher()
+```
+
+```java
+Observable.just("A String").subscribe(observer)
+```
+
+```java
+Observable.range(1,10).subscribe(observer)
+```
