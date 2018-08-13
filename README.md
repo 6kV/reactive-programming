@@ -74,3 +74,26 @@ The subscribe operator serves the purpose of the media by connecting an Observab
 Observer . We can pass one to three methods ( onNext , onComplete , onError ) to the
 subscribe operator, or we can pass an instance of the Observer interface to the
 subscribe operator to get the Observable connected with an Observer .
+
+### Cold Observable
+
+if you subscribe to the same Observable multiple times, you will get the emissions from the beginning for all the
+subscriptions
+
+### Hot Observable
+
+Cold Observables are passive, they don't emit anything until subscribe is called. Hot Observables are contrary to Cold Observables ; it doesn't need subscriptions to start emission. While you can compare Cold Observables to CD/DVD recordings, Hot Observables are like TV channels—they continue broadcasting (emitting) their content, irrespective of whether anyone is watching (Observing) it or not.
+Hot Observables resemble events more than data. The events may carry data with them, but there is a time-sensitive component where Observers that subscribed lately can miss out previously emitted data. They are specifically useful for UI events while working with Android/JavaFX/Swing. They are also very useful in resembling server requests.
+
+### Subjects
+
+Another great way to implement Hot Observables is Subject . Basically, it is acombination of Observable and Observer , as it has many common behaviors to bothObservables and Observers . Like Hot Observables , it maintains an internal Observer list and relays a single push to every Observer subscribed to it at the time of emission.
+
+ + AsyncSubject
+ + PublishSubject
+ + BehaviorSubject
+ + ReplaySubject
+ 
+ ```java
+ val subject = BehaviorSubject.create<Int>()
+```
