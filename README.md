@@ -63,3 +63,14 @@ Observable.just("A String").subscribe(observer)
 ```java
 Observable.range(1,10).subscribe(observer)
 ```
+
+```java
+Observable.interval(100,TimeUnit.MILLISECONDS)
+```
+
+### Subscribers
+
+The subscribe operator serves the purpose of the media by connecting an Observable to
+Observer . We can pass one to three methods ( onNext , onComplete , onError ) to the
+subscribe operator, or we can pass an instance of the Observer interface to the
+subscribe operator to get the Observable connected with an Observer .
