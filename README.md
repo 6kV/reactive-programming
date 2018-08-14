@@ -97,3 +97,8 @@ Another great way to implement Hot Observables is Subject . Basically, it is aco
  ```java
  val subject = BehaviorSubject.create<Int>()
 ```
+### Flowables (backpressure)
+
+The only problem with Observable is when an Observer cannot cope with the pace of an Observable.
+Backpressure is not supported in Observables and Observers , the solution could be using Flowables and Subscribers instead.
+Flowable hosts the default buffer size of 128 elements for operators, so, when the consumer is taking time, the emitted items may wait in the buffer.
