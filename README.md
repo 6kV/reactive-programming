@@ -118,3 +118,5 @@ Flowable, instead of emitting all the items, emitted few items in a chunk, waite
  + When you are emitting UI events (while working with Android, JavaFX, or Swing)
 
 Also, keep in mind that Flowables are slower in comparison to Observables.
+
+See **BackpressureStrategy.java**
