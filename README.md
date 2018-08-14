@@ -102,3 +102,19 @@ Another great way to implement Hot Observables is Subject . Basically, it is aco
 The only problem with Observable is when an Observer cannot cope with the pace of an Observable.
 Backpressure is not supported in Observables and Observers , the solution could be using Flowables and Subscribers instead.
 Flowable hosts the default buffer size of 128 elements for operators, so, when the consumer is taking time, the emitted items may wait in the buffer.
+
+Flowable, instead of emitting all the items, emitted few items in a chunk, waited for the consumer to coup up then again continued, and completed in an interleaved manner. This reduces a lot of problems itself.
+
+**When to use Flowables?**
+ + Flowables and backpressure are meant to help deal with larger amounts of data. So, use flowable if your source may emit 10,000+ items. Especially when the source is asynchronous so that the consumer chain may ask the producer to limit/regulate emissions when required.
+ + If you are reading from/parsing a file or database.
+ + When you want to emit from network IO operations/Streaming APIs that support
+ + blocking while returning results, which is how many IO sources work.
+
+**When to use Observables?**
+
+ + When you are dealing with a smaller amount of data (less than 10,000 emissions)
+ + When you are performing strictly synchronous operations or operations with limited concurrency
+ + When you are emitting UI events (while working with Android, JavaFX, or Swing)
+
+Also, keep in mind that Flowables are slower in comparison to Observables.
