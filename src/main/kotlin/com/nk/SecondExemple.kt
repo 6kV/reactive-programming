@@ -7,6 +7,7 @@ import io.reactivex.rxkotlin.toObservable
 
 
 fun main(args: Array<String>) {
+    /*
     val observer:Observer<Any> = object :Observer<Any> {
 
         override fun onNext(item: Any?) {
@@ -36,6 +37,6 @@ fun main(args: Array<String>) {
                     listOf("List with Single Item"),
                     listOf(1,2,3,4,5,6))
     observableOnList.subscribe(observer)
-
+*/
 }
 
