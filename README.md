@@ -120,3 +120,12 @@ Flowable, instead of emitting all the items, emitted few items in a chunk, waite
 Also, keep in mind that Flowables are slower in comparison to Observables.
 
 See **BackpressureStrategy.java**
+
+### schedulers
+
+ + **Schedulers.io() - I/O bound scheduler** : By I/O operations, we mean interactions with file systems, databases, services, or I/O devices.
+ + **Schedulers.computation() - CPU bound schedulers** : the most useful scheduler for programmers. It provides us with a bounded thread-pool, which can contain a number of threads equal to the number of available CPU cores. As the name suggests, this scheduler is meant for CPU intense works. 
+ + **Schedulers.newThread()** : 
+ + **Schedulers.single()** : 
+ + **Schedulers.trampoline()** :
+ + **Schedulers.from()** :
