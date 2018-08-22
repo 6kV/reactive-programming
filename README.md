@@ -123,7 +123,8 @@ See **BackpressureStrategy.java**
 
 ### schedulers
 
- + **Schedulers.io() - I/O bound scheduler** : By I/O operations, we mean interactions with file systems, databases, services, or I/O devices.
+ + **Schedulers.io() - I/O bound scheduler** : By I/O operations, we mean interactions with file systems, databases, services, or I/O devices. We should be cautious about using this scheduler as it can create an infinite number of
+threads (until the memory lasts) and can cause OutOfMemory errors.
  + **Schedulers.computation() - CPU bound schedulers** : the most useful scheduler for programmers. It provides us with a bounded thread-pool, which can contain a number of threads equal to the number of available CPU cores. As the name suggests, this scheduler is meant for CPU intense works. 
  + **Schedulers.newThread()** : 
  + **Schedulers.single()** : 
