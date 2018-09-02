@@ -43,3 +43,33 @@ val ronaldo = person3 {
         street = "street"
     }
 }
+
+// Function type is just a syntactic sugar for an interface
+class MyFunction: ()->Unit {
+
+    override fun invoke() {
+        println("I am called")
+    }
+}
+
+fun main(args: Array<String>) {
+    val myFunction = MyFunction()
+    myFunction()
+
+    val greet: ()-> Unit = { println("Hello") }
+
+    greet()
+
+    val length : Person.() -> Int = { age!! +1  }
+
+    val person = Person(
+            age = 3
+    )
+
+    println("length(person) = ${length(person)}")
+
+    val squareTest : Int.() -> Int = {this*this}
+
+    squareTest(33)
+
+}
