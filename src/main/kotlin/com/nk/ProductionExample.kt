@@ -6,7 +6,7 @@ import io.reactivex.schedulers.Schedulers
 fun findAllDeals() = Flowable.fromIterable<MyData>(MyIterable())
         // Buffer du nombre delements
         .buffer(100)
-                                                                                                                                                                                            .flatMap {
+        .flatMap {
             Flowable.just(it)
                     .subscribeOn(Schedulers.computation())
                     .doOnNext {
@@ -41,15 +41,38 @@ class MyIterator : Iterator<MyData> {
 }
 
 fun main(args: Array<String>) {
-
+    test3()
+    /*
     val allDeals = findAllDeals()
             .observeOn(Schedulers.io())
             .subscribe {
                 println(" OUT ===>  $it")
             }
-
-
+            */
     Thread.sleep(5000)
+}
+
+fun test(firstFunction: (MyData) -> Int,
+         secondFunction: (MyData) -> Int,
+         myData: MyData) {
+
+    firstFunction(myData)
+    secondFunction(myData)
+
+}
+
+fun test2(firstFunction: (MyData) -> Int,
+          secondFunction: (MyData) -> Int): (MyData, MyData) -> Unit =
+        { t1, t2 ->
+                println(firstFunction(t1))
+                println(secondFunction(t2))
+
+        }
 
 
+fun test3() {
+    val firstFunction: (MyData) -> Int = { it.number }
+    val secondFunction: (MyData) -> Int = { ++it.number }
+
+    test2(firstFunction, secondFunction)(MyData(5), MyData(9))
 }
